@@ -4,8 +4,8 @@ services:
   database:
     image: "postgres"
     environment:
-      - POSTGRES_USER=udaictypsql
-      - POSTGRES_PASSWORD=34^EC55DANqF+YL4
-      - POSTGRES_DB=udapeopledatabases
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=glee
     ports:
       - "5532:5432"
