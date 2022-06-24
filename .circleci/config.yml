@@ -316,7 +316,7 @@ notify_on_success:
     - slack/notify:
         event: pass
         channel: cicd
-        template: sucess_tagged_deployment_1
+        template: success_tagged_deployment_1
 workflows:
   default:
     jobs:
