@@ -1,5 +1,4 @@
 version: 2.1
-
 orbs:
  slack: circleci/slack@4.9.3
 
@@ -213,7 +212,7 @@ jobs:
       - checkout
       - install_ansible
       - add_ssh_keys:
-          fingerprints: ["d9:06:93:7c:dd:ac:25:bf:3d:f3:10:f5:5d:69:f6:67"]
+          fingerprints: ["0f:7c:f5:6e:72:32:86:04:81:00:9a:36:8e:c4:e4:fd"]
       - attach_workspace:
           at: ~/
       - run:
@@ -286,7 +285,7 @@ jobs:
 #      - install_ansible
 #      - install_nodejs
 #      - add_ssh_keys:
-#          fingerprints: ["d5:a4:0d:bd:36:a7:d2:03:2c:10:93:6a:7c:d1:a7:26"]
+#          fingerprints: ["0f:7c:f5:6e:72:32:86:04:81:00:9a:36:8e:c4:e4:fd"]
 #      - attach_workspace:
 #          at: ~/
 #      - restore_cache:
