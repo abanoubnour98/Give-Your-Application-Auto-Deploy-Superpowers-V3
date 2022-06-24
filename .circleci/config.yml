@@ -1,5 +1,16 @@
 version: 2.1
 
+orbs:
+ slack: circleci/slack@4.9.3
+
+commands:
+  notify_on_failure:
+    steps:
+      - slack/notify:
+          event: fail
+          channel: cicd
+          template: basic_fail_1
+          
 commands:
   install_awscli:
     description: Install AWS CLI v2
@@ -79,6 +90,7 @@ jobs:
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-deps
+      - notify_on_failure
   build-backend:
     docker:
       - image: cimg/node:13.8.0
@@ -95,6 +107,7 @@ jobs:
       - save_cache:
           paths: [backend/node_modules]
           key: backend-deps
+      - notify_on_failure
   test-frontend:
     docker:
       - image: cimg/node:13.8.0
@@ -108,6 +121,7 @@ jobs:
             cd frontend
             npm install
             npm test
+      - notify_on_failure
   test-backend:
     docker:
       - image: cimg/node:13.8.0
@@ -121,6 +135,7 @@ jobs:
             cd backend
             npm install
             npm test
+      - notify_on_failure
   scan-frontend:
     docker:
       - image: cimg/node:13.8.0
@@ -135,6 +150,7 @@ jobs:
             npm install
             npm audit fix --force --audit-level=critical
             npm audit --audit-level=critical
+      - notify_on_failure
   scan-backend:
     docker:
       - image: cimg/node:13.8.0
@@ -150,6 +166,7 @@ jobs:
             npm audit fix --force --audit-level=critical
             npm audit fix --force --audit-level=critical
             npm audit --audit-level=critical
+      - notify_on_failure
   deploy-infrastructure:
     docker:
       - image: cimg/base:stable
@@ -187,6 +204,7 @@ jobs:
             - project/.circleci/ansible/inventory.txt
 
       - destroy-environment
+      - notify_on_failure
 
   configure-infrastructure:
     docker:
@@ -195,7 +213,7 @@ jobs:
       - checkout
       - install_ansible
       - add_ssh_keys:
-          fingerprints: ["a8:d3:98:65:9e:48:e2:70:a1:fc:61:eb:1d:03:29:cc"]
+          fingerprints: ["d9:06:93:7c:dd:ac:25:bf:3d:f3:10:f5:5d:69:f6:67"]
       - attach_workspace:
           at: ~/
       - run:
@@ -205,6 +223,7 @@ jobs:
             cat inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment
+      - notify_on_failure
   run-migrations:
     docker:
       - image: cimg/node:13.8.0
@@ -226,6 +245,7 @@ jobs:
             fi
       - destroy-environment
       - revert-migrations
+      - notify_on_failure
 #  deploy-frontend:
 #    docker:
 #      - image: cimg/base:stable
