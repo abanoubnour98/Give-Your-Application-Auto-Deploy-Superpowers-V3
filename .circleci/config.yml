@@ -9,7 +9,8 @@ commands:
           event: fail
           channel: cicd
           template: basic_fail_1
-    install_awscli:
+
+  install_awscli:
     description: Install AWS CLI v2
     steps:
       - run:
@@ -18,6 +19,7 @@ commands:
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
             sudo ./aws/install
+          
   install_ansible:
     description: Install Ansible
     steps:
@@ -28,6 +30,7 @@ commands:
             sudo apt install software-properties-common -y
             sudo add-apt-repository --yes --update ppa:ansible/ansible
             sudo apt install ansible -y
+
   install_nodejs:
     description: Install Node.js 13
     steps:
@@ -36,7 +39,7 @@ commands:
           command: |
             curl -fsSL https://deb.nodesource.com/setup_13.x | sudo -E bash -
             sudo apt install -y nodejs
-# commands:
+
 #   destroy-environment:
 #     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
 #     parameters:
