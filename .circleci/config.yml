@@ -109,7 +109,7 @@ jobs:
       - save_cache:
           paths: [backend/node_modules]
           key: backend-deps
-       - notify_on_failure
+      - notify_on_failure
 
   scan-frontend:
     docker:
