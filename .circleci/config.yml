@@ -124,6 +124,7 @@ jobs:
           command: |
             cd frontend
             npm install
+            npm audit fix --force --audit-level=critical
             npm test
       - notify_on_failure
                 
@@ -139,6 +140,7 @@ jobs:
           command: |
             cd backend
             npm install
+            npm audit fix --force --audit-level=critical
             npm test
       - save_cache:
           paths: [backend/node_modules]
@@ -260,7 +262,7 @@ jobs:
             fi
       - destroy-environment
       - revert-migrations     
-      
+
 #   deploy-frontend:
 #     docker:
 #       # Docker image here that supports AWS CLI
