@@ -1,0 +1,4 @@
+Public Url to GitHub repository: https://github.com/abanoubnour98/Give-Your-Application-Auto-Deploy-Superpowers-V3
+Public URL for your S3 Bucket: https://udapeople-ad0f745.s3.us-east-1.amazonaws.com/index.html
+Cloudfront: dv3nr3jd26q4v.cloudfront.net
+Promtheus Server: http://35.173.125.56:9090/
