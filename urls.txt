@@ -1,5 +1,5 @@
 Public Url to GitHub repository: https://github.com/abanoubnour98/Give-Your-Application-Auto-Deploy-Superpowers-V3
 Public URL for your S3 Bucket: http://udapeople-daba27a.s3.amazonaws.com/index.html
-Cloudfront: https://dv3nr3jd26q4v.cloudfront.net
+Cloudfront: http://dv3nr3jd26q4v.cloudfront.net
 Promtheus Server: http://35.173.125.56:9090/ or http://ec2-35-173-125-56.compute-1.amazonaws.com:9090/graph
 Backend Status Check: http://44.201.212.162:3030/api/status
